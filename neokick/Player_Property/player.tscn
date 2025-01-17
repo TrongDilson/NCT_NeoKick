@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://cpxoadiyhyuye"]
+[gd_scene load_steps=19 format=3 uid="uid://cpxoadiyhyuye"]
 
 [ext_resource type="Texture2D" uid="uid://bmkuyj3y8m0or" path="res://Sprites/Brawler-Girl/Idle/idle1.png" id="1_vc0u2"]
 [ext_resource type="Texture2D" uid="uid://bacpmucxj1k8i" path="res://Sprites/Brawler-Girl/Idle/idle2.png" id="2_1ivah"]
@@ -14,6 +14,8 @@
 [ext_resource type="Texture2D" uid="uid://dy3gs0yv1d11a" path="res://Sprites/Brawler-Girl/Walk/walk8.png" id="12_plsfb"]
 [ext_resource type="Texture2D" uid="uid://bputvah6frqsx" path="res://Sprites/Brawler-Girl/Walk/walk9.png" id="13_oxxx4"]
 [ext_resource type="Texture2D" uid="uid://djbbukhdie6oq" path="res://Sprites/Brawler-Girl/Walk/walk10.png" id="14_326qb"]
+[ext_resource type="Script" path="res://Scripts/player.gd" id="15_21coo"]
+[ext_resource type="Script" path="res://Scripts/state.gd" id="16_rf17r"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_o0d4d"]
 animations = [{
@@ -73,13 +75,17 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wq5em"]
 size = Vector2(15, 42)
 
-[node name="Player" type="CharacterBody2D"]
+[node name="Player" type="CharacterBody2D" groups=["Player"]]
+script = ExtResource("15_21coo")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_o0d4d")
 animation = &"idle"
-frame_progress = 0.285349
+frame_progress = 0.0307049
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-2.5, 10)
 shape = SubResource("RectangleShape2D_wq5em")
+
+[node name="State Machine" type="Node2D" parent="."]
+script = ExtResource("16_rf17r")
